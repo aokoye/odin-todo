@@ -1,0 +1,26 @@
+body {
+     display: flex;
+    flex-direction: column;
+ }
+
+header {
+    height: 100px;
+    background-color: lightskyblue; 
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    background-color: lightseagreen;
+    padding: 10px;
+}
+
+#list {
+    padding: 10px;
+}
