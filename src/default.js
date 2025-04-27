@@ -12,17 +12,36 @@ export const id1 = data[0].id
 
 export function loadTodos() {
     const list = document.createElement('div');
-    list.classList.add('list')
+    list.classList.add('list');
+
+    const item = document.createElement('div');
+    item.classList.add('item');
+
+    
 
     data.forEach((data) => {
-        const title = document.createElement('h2')
+        const title = document.createElement('div')
         title.setAttribute('id', data.id)
+        title.classList.add('todo')
         title.textContent = data.title
-        list.appendChild(title)
+
+        const delBtn = document.createElement('button');
+        delBtn.classList.add('delete');
+        delBtn.textContent = 'delete';
+        title.appendChild(delBtn)
+
+        const editBtn = document.createElement('button');
+        editBtn.classList.add('edit');
+        editBtn.textContent = 'edit';
+        title.appendChild(editBtn)
+       
+
+        list.appendChild(item)
+        item.appendChild(title)
+        title.appendChild(delBtn)
+        title.appendChild(editBtn)
     })
 
-    // list.appendChild()
-    
     return list
 }
 
