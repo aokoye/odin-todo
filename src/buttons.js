@@ -2,6 +2,7 @@ export const dialog = document.querySelector("dialog");
 export const showButton = document.querySelector("dialog + button");
 export const closeButton = document.querySelector("dialog button");
 export const confirmBtn = document.getElementById('confirmBtn');
+export const deleteBtn = document.querySelector(".delete");
 
 // "Show the dialog" button opens the dialog modally
 showButton.addEventListener("click", (e) => {
@@ -20,3 +21,9 @@ confirmBtn.addEventListener('click', (e) => {
     e.preventDefault()
     dialog.close();
 });
+
+//Delete button
+
+// deleteBtn.addEventListener('click', function (e) {
+
+// }) 

@@ -1,7 +1,7 @@
 import "./modern-normalize.css";
 import "./style.css";
 import { data } from './todos'
-import { loadTodos, id1} from "./default.js" 
+import { loadTodos, itmDelete, id1} from "./default.js" 
 import { dialog, showButton, closeButton, confirmBtn } from "./buttons.js"
 // import otterImg from "./otter.jpg";
    
@@ -31,8 +31,17 @@ showButton
 closeButton
 confirmBtn
 
+
 //new todo
 confirmBtn.addEventListener('click', (e) => {
     clearContent()
     fillList()
+    
 })
+
+// window.addEventListener("DOMContentLoaded", e => {
+//     document.querySelectorAll(".delete").forEach((element, i) => {
+//       element.addEventListener("click", () => console.log(`Div ${i} was clicked.`))
+//     });
+//   })
+

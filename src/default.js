@@ -1,10 +1,11 @@
 import { data, giveID } from './todos'
-import { dialog, showButton, closeButton, confirmBtn } from "./buttons.js"
+import { dialog, showButton, closeButton, confirmBtn, deleteBtn } from "./buttons.js"
 
 dialog
 showButton
 closeButton
 confirmBtn
+deleteBtn
 
 
 export const id1 = data[0].id
@@ -14,32 +15,45 @@ export function loadTodos() {
     const list = document.createElement('div');
     list.classList.add('list');
 
-    const item = document.createElement('div');
-    item.classList.add('item');
+    // const item = document.createElement('div');
+    // item.classList.add('item');
 
     
 
     data.forEach((data) => {
-        const title = document.createElement('div')
-        title.setAttribute('id', data.id)
-        title.classList.add('todo')
+        const item = document.createElement('div')
+        item.setAttribute('id', data.id)
+        item.classList.add('todo')
+        
+        const title = document.createElement('p')
         title.textContent = data.title
+
+        const buttons = document.createElement('div')
+        buttons.classList.add('buttons')
 
         const delBtn = document.createElement('button');
         delBtn.classList.add('delete');
+        delBtn.classList.add(data.id)
+        // delBtn.setAttribute('id', data.id)
         delBtn.textContent = 'delete';
         title.appendChild(delBtn)
 
+
         const editBtn = document.createElement('button');
         editBtn.classList.add('edit');
+        editBtn.classList.add(data.id)
+        // editBtn.setAttribute('id', data.id)
         editBtn.textContent = 'edit';
         title.appendChild(editBtn)
        
 
         list.appendChild(item)
         item.appendChild(title)
-        title.appendChild(delBtn)
-        title.appendChild(editBtn)
+        item.appendChild(buttons)
+        buttons.appendChild(delBtn)
+        delBtn.addEventListener('click', delFunction)
+        buttons.appendChild(editBtn)
+        
     })
 
     return list
@@ -70,3 +84,16 @@ confirmBtn.addEventListener('click', (e) => {
     return loadTodos()
     // return console.log('I worked')
 })
+
+
+function delFunction() {
+    console.log(this.parentNode.getAttribute("id"))
+}
+
+
+//deleting todos
+// window.addEventListener("DOMContentLoaded", e => {
+//     document.querySelectorAll(".delete").forEach((element, i) => {
+//       element.addEventListener("click", () => console.log(element.parentNode.getAttribute("id")))
+//     });
+//   })
