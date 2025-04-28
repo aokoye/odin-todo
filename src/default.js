@@ -1,14 +1,12 @@
+import { clearContent, fillList } from './index.js'
 import { data, giveID } from './todos'
-import { dialog, showButton, closeButton, confirmBtn, deleteBtn } from "./buttons.js"
+import { dialog, showButton, closeButton, confirmBtn } from "./buttons.js"
 
 dialog
 showButton
 closeButton
 confirmBtn
-deleteBtn
 
-
-export const id1 = data[0].id
 
 
 export function loadTodos() {
@@ -82,18 +80,31 @@ confirmBtn.addEventListener('click', (e) => {
     newTodo(title, description, due)
     giveID()
     return loadTodos()
-    // return console.log('I worked')
 })
 
-
 function delFunction() {
-    console.log(this.parentNode.getAttribute("id"))
+    let buttonId = this.parentNode.parentNode.getAttribute("id")
+    const targetItemId = buttonId
+    // function getItem(item) {
+    //     return item.id === targetItemId
+    // }
+
+    function isItem(item) {
+        return item.id === targetItemId
+    }
+
+    let targetItem = data.find(isItem)
+
+    //finds the index
+    function itemIndex(id) {
+        return id === targetItem
+    }
+    
+    let idx = data.findIndex(itemIndex)
+    console.log(idx)
+
+    const remove = data.splice(idx, 1)
+    remove
+    clearContent()
+    fillList()
 }
-
-
-//deleting todos
-// window.addEventListener("DOMContentLoaded", e => {
-//     document.querySelectorAll(".delete").forEach((element, i) => {
-//       element.addEventListener("click", () => console.log(element.parentNode.getAttribute("id")))
-//     });
-//   })

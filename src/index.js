@@ -1,8 +1,8 @@
 import "./modern-normalize.css";
 import "./style.css";
 import { data } from './todos'
-import { loadTodos, itmDelete, id1} from "./default.js" 
-import { dialog, showButton, closeButton, confirmBtn } from "./buttons.js"
+import { loadTodos } from "./default.js" 
+import { dialog, showButton, closeButton, confirmBtn, deleteBtn } from "./buttons.js"
 // import otterImg from "./otter.jpg";
    
 // const image = document.createElement("img");
@@ -12,14 +12,14 @@ import { dialog, showButton, closeButton, confirmBtn } from "./buttons.js"
 
 
 
-function clearContent() {
+export function clearContent() {
     const content = document.querySelector('#list');
     content.innerHTML = '';
 }
 
 const listContainer = document.getElementById("list")
 
-function fillList() {
+export function fillList() {
     listContainer.appendChild(loadTodos())
 }
 fillList()
@@ -29,6 +29,7 @@ dialog
 showButton
 closeButton
 confirmBtn
+deleteBtn
 
 
 //new todo
@@ -37,10 +38,3 @@ confirmBtn.addEventListener('click', (e) => {
     fillList()
     
 })
-
-// window.addEventListener("DOMContentLoaded", e => {
-//     document.querySelectorAll(".delete").forEach((element, i) => {
-//       element.addEventListener("click", () => console.log(`Div ${i} was clicked.`))
-//     });
-//   })
-

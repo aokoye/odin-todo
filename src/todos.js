@@ -1,3 +1,11 @@
+import { dialog, showButton, closeButton, confirmBtn, deleteBtn } from "./buttons.js"
+
+dialog
+showButton
+closeButton
+confirmBtn
+deleteBtn
+
 export const data = [
     {
         title: 'Make new app',
@@ -26,3 +34,28 @@ export function giveID() {
     
 }
 giveID()
+
+// function delFunction() {
+//     let buttonId = this.parentNode.parentNode.getAttribute("id")
+//     const targetItemId = buttonId
+//     // function getItem(item) {
+//     //     return item.id === targetItemId
+//     // }
+
+//     function isItem(item) {
+//         return item.id === targetItemId
+//     }
+
+//     let targetItem = data.find(isItem)
+
+//     //finds the index
+//     function itemIndex(id) {
+//         return id === targetItem
+//     }
+    
+//     let idx = data.findIndex(itemIndex)
+//     console.log(idx)
+
+//     const remove = data.splice(idx, 1)
+//     remove
+// }

@@ -21,9 +21,3 @@ confirmBtn.addEventListener('click', (e) => {
     e.preventDefault()
     dialog.close();
 });
-
-//Delete button
-
-// deleteBtn.addEventListener('click', function (e) {
-
-// }) 
