@@ -10,7 +10,6 @@ import { dialog, showButton, closeButton, confirmBtn } from "./buttons.js"
    
 // document.body.appendChild(image);
 
-console.log(id1)
 
 
 function clearContent() {
