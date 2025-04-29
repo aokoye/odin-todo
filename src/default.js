@@ -40,9 +40,16 @@ export function loadTodos() {
         const editBtn = document.createElement('button');
         editBtn.classList.add('edit');
         editBtn.classList.add(data.id)
-        // editBtn.setAttribute('id', data.id)
+        editBtn.setAttribute('id', data.id)
         editBtn.textContent = 'edit';
         title.appendChild(editBtn)
+
+        const doneBtn = document.createElement('button');
+        doneBtn.classList.add('done');
+        doneBtn.classList.add(data.id)
+        doneBtn.setAttribute('id', data.id)
+        doneBtn.textContent = 'finished';
+        title.appendChild(doneBtn)
        
 
         list.appendChild(item)
@@ -51,6 +58,8 @@ export function loadTodos() {
         buttons.appendChild(delBtn)
         delBtn.addEventListener('click', delFunction)
         buttons.appendChild(editBtn)
+        buttons.appendChild(doneBtn)
+        doneBtn.addEventListener('click', doneFunction)
         
     })
 
@@ -107,4 +116,13 @@ function delFunction() {
     remove
     clearContent()
     fillList()
+}
+
+function doneFunction() {
+    if (this.parentNode.parentNode.classList.contains('finished')) {
+        this.parentNode.parentNode.classList.remove('finished');
+    } else {
+        this.parentNode.parentNode.classList.add('finished')
+    }
+    
 }

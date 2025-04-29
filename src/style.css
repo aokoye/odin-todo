@@ -24,3 +24,7 @@ nav {
 #list {
     padding: 10px;
 }
+
+.finished p {
+    text-decoration: line-through;
+}
