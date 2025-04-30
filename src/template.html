@@ -23,15 +23,17 @@
                     <label for="due">Due Date</label>
                     <input type="date" name="due" id="due">
                 </div>
-                <div class="formRow">
+                
+                <fieldset class="formRow">
                     <p>Importance:</p>
                     <label for="low">Low</label>
-                    <input type="radio" id="low" value="low">
+                    <input type="radio" name="importance" id="low" value="low">
                     <label for="medium">Medium</label>
-                    <input type="radio" id="medium" value="medium">
+                    <input type="radio" name="importance" id="medium" value="medium">
                     <label for="high">High</label>
-                    <input type="radio" id="high" value="high">
-                </div>
+                    <input type="radio" name="importance" id="high" value="high">
+                </fieldset>
+                
                 <button value="cancel" formMethod="dialog">Cancel</button>
                 <button id="confirmBtn" value="default">Confirm</button>
             </form>

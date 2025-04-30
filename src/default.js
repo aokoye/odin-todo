@@ -25,6 +25,22 @@ export function loadTodos() {
         
         const title = document.createElement('p')
         title.textContent = data.title
+        
+        const hidden = document.createElement('div')
+        hidden.classList.add('hidden')
+        hidden.classList.add('hide')
+
+        const details = document.createElement('p')
+        details.classList.add('details')
+        details.textContent = data.details
+
+        const due = document.createElement('p')
+        due.classList.add('due')
+        due.textContent = data.due
+
+        const importance = document.createElement('p')
+        importance.classList.add('importance')
+        importance.textContent = data.importance
 
         const buttons = document.createElement('div')
         buttons.classList.add('buttons')
@@ -51,16 +67,28 @@ export function loadTodos() {
         doneBtn.textContent = 'finished';
         title.appendChild(doneBtn)
        
+        const moreBtn = document.createElement('button');
+        moreBtn.classList.add('more');
+        moreBtn.classList.add(data.id)
+        moreBtn.setAttribute('id', data.id)
+        moreBtn.textContent = 'more';
+        title.appendChild(moreBtn)
 
         list.appendChild(item)
         item.appendChild(title)
+        item.appendChild(hidden)
+        hidden.appendChild(details)
+        hidden.appendChild(due)
+        hidden.appendChild(importance)
         item.appendChild(buttons)
-        buttons.appendChild(delBtn)
-        delBtn.addEventListener('click', delFunction)
+        buttons.appendChild(moreBtn)
+        moreBtn.addEventListener('click', hideFunction)
         buttons.appendChild(editBtn)
         editBtn.addEventListener('click', editFunction)
         buttons.appendChild(doneBtn)
         doneBtn.addEventListener('click', doneFunction)
+        buttons.appendChild(delBtn)
+        delBtn.addEventListener('click', delFunction)
         
     })
 
@@ -75,11 +103,13 @@ confirmBtn.addEventListener('click', (e) => {
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
     let due = document.getElementById('due').value;
+    let importance = document.querySelector('input[name="importance"]:checked').value
 
-    function newTodo(title, description, due) {
+    function newTodo(title, description, due, importance) {
         let newObj = {}
         newObj.title = title;
-        newObj.description = description
+        newObj.details = description
+        newObj.importance = importance
         newObj.due = due;
         newObj.done = false;
         newObj.id = '';
@@ -87,7 +117,7 @@ confirmBtn.addEventListener('click', (e) => {
         data.push(newObj)
     }
     
-    newTodo(title, description, due)
+    newTodo(title, description, due, importance)
     giveID()
     return loadTodos()
 })
@@ -126,6 +156,14 @@ function doneFunction() {
         this.parentNode.parentNode.classList.add('finished')
     }
     
+}
+
+function hideFunction() {
+    if (this.parentNode.previousElementSibling.classList.contains('hide')) {
+        this.parentNode.previousElementSibling.classList.remove('hide');
+    } else {
+        this.parentNode.previousElementSibling.classList.add('hide')
+    }  
 }
 
 const editConfirmBtn = editDialog.querySelector("#editConfirmBtn");

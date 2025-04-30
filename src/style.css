@@ -28,3 +28,7 @@ nav {
 .finished p {
     text-decoration: line-through;
 }
+
+.hide {
+    display: none;
+}

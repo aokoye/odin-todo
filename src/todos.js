@@ -21,7 +21,6 @@ export const data = [
         details: 'Make sure to figure out what you need for Seattle',
         importance: 'low',
         due: '',
-        importance: 'medium',
         done: false,
         project: 'default',
         id: ''
