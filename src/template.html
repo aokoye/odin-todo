@@ -23,6 +23,15 @@
                     <label for="due">Due Date</label>
                     <input type="date" name="due" id="due">
                 </div>
+                <div class="formRow">
+                    <p>Importance:</p>
+                    <label for="low">Low</label>
+                    <input type="radio" id="low" value="low">
+                    <label for="medium">Medium</label>
+                    <input type="radio" id="medium" value="medium">
+                    <label for="high">High</label>
+                    <input type="radio" id="high" value="high">
+                </div>
                 <button value="cancel" formMethod="dialog">Cancel</button>
                 <button id="confirmBtn" value="default">Confirm</button>
             </form>
@@ -31,6 +40,35 @@
         <button id="today">Today</button>
         <button id="default">Default Project</button>
         </nav>
+        <dialog id="editDialog">
+            <form>
+                <h3>Edit Your Todo</h3>
+                <div class="formRow">
+                    <label for="editTitle">Title</label>
+                    <input id='editTitle' type="text">
+                </div>
+                <div class="formRow">
+                    <label for="editDescription">Description</label>
+                    <input type="text" name="editDescription" id="editDescription">
+                </div>
+                <div class="formRow">
+                    <label for="editDue">Due Date</label>
+                    <input type="date" name="editDue" id="editDue">
+                </div>
+                <div class="formRow">
+                    <p>Importance:</p>
+                    <label for="editLow">Low</label>
+                    <input type="radio" id="editLow" value="low">
+                    <label for="editMedium">Medium</label>
+                    <input type="radio" id="editMedium" value="medium">
+                    <label for="editHigh">High</label>
+                    <input type="radio" id="editHigh" value="high">
+                </div>
+                <input type="hidden" id="itemId" name="itemId" value="" />
+                <button value="cancel" formMethod="dialog">Cancel</button>
+                <button id="editConfirmBtn" value="default">Confirm Edits</button>
+            </form>
+        </dialog>
         <div id="list"></div>
 </body>
 <!-- <script>

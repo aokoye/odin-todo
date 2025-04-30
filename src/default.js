@@ -58,6 +58,7 @@ export function loadTodos() {
         buttons.appendChild(delBtn)
         delBtn.addEventListener('click', delFunction)
         buttons.appendChild(editBtn)
+        editBtn.addEventListener('click', editFunction)
         buttons.appendChild(doneBtn)
         doneBtn.addEventListener('click', doneFunction)
         
@@ -126,3 +127,58 @@ function doneFunction() {
     }
     
 }
+
+const editConfirmBtn = editDialog.querySelector("#editConfirmBtn");
+function editFunction(buttonId) {
+    console.log('hello')
+    editDialog.showModal()
+    
+    let id = this.parentNode.parentNode.getAttribute("id")
+    itemId === id;
+    document.getElementById('itemId').value = id
+}
+
+editConfirmBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    editDialog.close()
+
+    const title = document.getElementById('editTitle').value
+    const description = document.getElementById('editDescription').value
+    const due = document.getElementById('editDue').value
+    
+    let buttonId = document.getElementById('itemId').value
+    const targetItemId = buttonId
+
+    function isItem(item) {
+        return item.id === targetItemId
+    }
+
+    let targetItem = data.find(isItem)
+
+    //finds the index
+    function itemIndex(id) {
+        return id === targetItem
+    }
+    
+    let idx = data.findIndex(itemIndex)
+    console.log(idx)
+    
+    if(title != '') {
+        data[idx].title = title
+    }
+    
+    if(description != '') {
+        data[idx].description = description
+    }
+
+    if(due != '') {
+        data[idx].due = due
+    }
+
+    console.log(data[idx].due)
+    console.log('good bye')
+
+    clearContent()
+    fillList()
+    
+  });
