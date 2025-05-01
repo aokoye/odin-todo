@@ -1,3 +1,5 @@
+import { data, giveID, project, toLocalStorage } from './todos'
+
 export const dialog = document.querySelector("dialog");
 export const showButton = document.querySelector("dialog + button");
 export const closeButton = document.querySelector("dialog button");
@@ -8,6 +10,19 @@ export const deleteBtn = document.querySelector(".delete");
 showButton.addEventListener("click", (e) => {
     e.preventDefault();
     dialog.showModal();
+    console.log(project)
+
+    let select = document.getElementById('projectOptions');
+    let options = project;
+    // let noSpaces = project.title.replaceAll(' ', '');
+
+    for(let i = 0; i < options.length; i++) {
+        let opt = options[i].title;
+        let el = document.createElement('option')
+        el.textContent = opt;
+        el.value = options[i].title.replaceAll(' ', '');
+        select.appendChild(el);
+    }
 });
 
 // "Close" button closes the dialog
@@ -16,7 +31,7 @@ closeButton.addEventListener("click", (e) => {
     dialog.close();
 });
 
-//Add book to library (and many duplicated functions)
+//
 confirmBtn.addEventListener('click', (e) => {
     e.preventDefault()
     dialog.close();
