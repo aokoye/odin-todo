@@ -28,6 +28,24 @@ const listContainer = document.getElementById("list")
 export function fillList() {
     listContainer.appendChild(loadTodos())
 }
+
+function doneStyle() {
+    const finished = document.querySelectorAll('.finished')
+    const unfinished = document.querySelectorAll('.unfinished')
+    
+    if (this.parentNode.parentNode.classList.contains('finished')) {
+        this.parentNode.parentNode.classList.remove('finished');
+        this.parentNode.parentNode.classList.add('unfinished');
+        data[idx].done = false
+        localStorage.setItem('itemData', JSON.stringify(data));
+    } else {
+        this.parentNode.parentNode.classList.remove('unfinished');
+        this.parentNode.parentNode.classList.add('finished')
+        data[idx].done = true
+        localStorage.setItem('itemData', JSON.stringify(data));
+    }
+} 
+
 fillList()
 
 const projectContainer = document.getElementById("projectList")

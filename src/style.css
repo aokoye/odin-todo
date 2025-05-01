@@ -29,6 +29,10 @@ nav {
     text-decoration: line-through;
 }
 
+.unfinished p {
+    text-decoration: none;
+}
+
 .hide {
     display: none;
 }

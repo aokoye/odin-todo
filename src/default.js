@@ -46,7 +46,13 @@ export function loadTodos() {
         const item = document.createElement('div')
         item.setAttribute('id', data.id)
         item.classList.add('todo')
+        item.classList.add('unfinished')
         
+        if (data.done === true) {
+            item.classList.remove('unfinished')
+            item.classList.add('finished')
+        }
+
         const title = document.createElement('p')
         title.textContent = data.title
         
@@ -201,9 +207,11 @@ function doneFunction() {
 
     if (this.parentNode.parentNode.classList.contains('finished')) {
         this.parentNode.parentNode.classList.remove('finished');
+        this.parentNode.parentNode.classList.add('unfinished');
         data[idx].done = false
         localStorage.setItem('itemData', JSON.stringify(data));
     } else {
+        this.parentNode.parentNode.classList.remove('unfinished');
         this.parentNode.parentNode.classList.add('finished')
         data[idx].done = true
         localStorage.setItem('itemData', JSON.stringify(data));
