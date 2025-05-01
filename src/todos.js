@@ -6,26 +6,29 @@ closeButton
 confirmBtn
 deleteBtn
 
-export const data = [
-    {
-        title: 'Make new app',
-        details: 'Todo app from TOP',
-        importance: 'medium',
-        due: '',
-        done: false,
-        project: 'default',
-        id: ''
-    },
-    {
-        title: 'Make grocery list',
-        details: 'Make sure to figure out what you need for Seattle',
-        importance: 'low',
-        due: '',
-        done: false,
-        project: 'default',
-        id: ''
-    }
-]
+export let data = localStorage.getItem('itemData') ?
+JSON.parse(localStorage.getItem('itemData')) : []
+
+// export let data = [
+//     {
+//         title: 'Make new app',
+//         details: 'Todo app from TOP',
+//         importance: 'medium',
+//         due: '',
+//         done: false,
+//         project: 'default',
+//         id: ''
+//     },
+//     {
+//         title: 'Make grocery list',
+//         details: 'Make sure to figure out what you need for Seattle',
+//         importance: 'low',
+//         due: '',
+//         done: false,
+//         project: 'default',
+//         id: ''
+//     }
+// ]
 
 
 export function giveID() {
@@ -36,6 +39,15 @@ export function giveID() {
     
 }
 giveID()
+
+// const dataFromStorage = localStorage.getItem('itemData')
+// const itemData = JSON.parse(dataFromStorage)
+
+export function toLocalStorage() {
+    const stringifiedData = JSON.stringify(data)
+    localStorage.setItem('itemData', stringifiedData)
+}
+toLocalStorage()
 
 // function delFunction() {
 //     let buttonId = this.parentNode.parentNode.getAttribute("id")

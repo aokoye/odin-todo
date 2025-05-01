@@ -1,5 +1,5 @@
 import { clearContent, fillList } from './index.js'
-import { data, giveID } from './todos'
+import { data, giveID, toLocalStorage } from './todos'
 import { dialog, showButton, closeButton, confirmBtn } from "./buttons.js"
 
 dialog
@@ -7,9 +7,33 @@ showButton
 closeButton
 confirmBtn
 
+// const dataFromStorage = localStorage.getItem('itemData')
+// const data = JSON.parse(dataFromStorage)
+
+const storageData = localStorage.getItem("itemData")
+const dataString = JSON.stringify(data)
+    
+export function dataChange() {
+    if (storageData === dataString) {
+        console.log('same')
+    } else {
+        console.log('not same')
+        console.log(storageData)
+        console.log(dataString)
+
+        data === storageData
+        console.log(data)
+    }
+
+    console.log('I might be working')
+}
+
+
 
 
 export function loadTodos() {
+    // dataChange()
+
     const list = document.createElement('div');
     list.classList.add('list');
 
@@ -91,7 +115,7 @@ export function loadTodos() {
         delBtn.addEventListener('click', delFunction)
         
     })
-
+    // toLocalStorage()
     return list
 }
 
@@ -115,10 +139,12 @@ confirmBtn.addEventListener('click', (e) => {
         newObj.id = '';
 
         data.push(newObj)
+        localStorage.setItem('itemData', JSON.stringify(data));
     }
     
     newTodo(title, description, due, importance)
     giveID()
+    // toLocalStorage()
     return loadTodos()
 })
 
@@ -144,7 +170,9 @@ function delFunction() {
     console.log(idx)
 
     const remove = data.splice(idx, 1)
+    
     remove
+    localStorage.setItem('itemData', JSON.stringify(data));
     clearContent()
     fillList()
 }
@@ -152,10 +180,12 @@ function delFunction() {
 function doneFunction() {
     if (this.parentNode.parentNode.classList.contains('finished')) {
         this.parentNode.parentNode.classList.remove('finished');
+        localStorage.setItem('itemData', JSON.stringify(data));
     } else {
         this.parentNode.parentNode.classList.add('finished')
+        localStorage.setItem('itemData', JSON.stringify(data));
     }
-    
+    localStorage.setItem('itemData', JSON.stringify(data));
 }
 
 function hideFunction() {
@@ -216,6 +246,7 @@ editConfirmBtn.addEventListener("click", (event) => {
     console.log(data[idx].due)
     console.log('good bye')
 
+    localStorage.setItem('itemData', JSON.stringify(data));
     clearContent()
     fillList()
     
