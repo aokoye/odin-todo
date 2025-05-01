@@ -9,6 +9,9 @@ deleteBtn
 export let data = localStorage.getItem('itemData') ?
 JSON.parse(localStorage.getItem('itemData')) : []
 
+export let project = localStorage.getItem('projectData') ?
+JSON.parse(localStorage.getItem('projectData')) : []
+
 // export let data = [
 //     {
 //         title: 'Make new app',

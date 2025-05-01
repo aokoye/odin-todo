@@ -1,7 +1,7 @@
 import "./modern-normalize.css";
 import "./style.css";
 import { data, toLocalStorage } from './todos'
-import { loadTodos, dataChange } from "./default.js" 
+import { loadTodos, loadProjects } from "./default.js" 
 import { dialog, showButton, closeButton, confirmBtn, deleteBtn } from "./buttons.js"
 // import otterImg from "./otter.jpg";
    
@@ -22,9 +22,14 @@ const listContainer = document.getElementById("list")
 export function fillList() {
     // dataChange()
     listContainer.appendChild(loadTodos())
-    
 }
 fillList()
+
+const projectContainer = document.getElementById("projectList")
+export function fillProject() {
+    projectContainer.appendChild(loadProjects())
+}
+fillProject()
 
 // Modal buttons
 dialog

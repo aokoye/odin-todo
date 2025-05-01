@@ -1,6 +1,6 @@
 import { clearContent, fillList } from './index.js'
-import { data, giveID, toLocalStorage } from './todos'
-import { dialog, showButton, closeButton, confirmBtn } from "./buttons.js"
+import { data, giveID, project, toLocalStorage } from './todos'
+import { dialog, showButton, closeButton, confirmBtn, deleteBtn } from "./buttons.js"
 
 dialog
 showButton
@@ -221,7 +221,6 @@ function hideFunction() {
 
 const editConfirmBtn = editDialog.querySelector("#editConfirmBtn");
 function editFunction(buttonId) {
-    console.log('hello')
     editDialog.showModal()
     
     let id = this.parentNode.parentNode.getAttribute("id")
@@ -273,4 +272,58 @@ editConfirmBtn.addEventListener("click", (event) => {
     clearContent()
     fillList()
     
-  });
+});
+
+
+//Project code'
+
+const newProjectBtn = document.querySelector('#newProjectBtn');
+// const newProject = document.querySelector('#newProject')
+const projectConfirmBtn = newProject.querySelector('#projectConfirmBtn')
+
+newProjectBtn.addEventListener('click',(event) => {
+    newProject.showModal()
+    event.preventDefault()
+    console.log('click')
+})
+
+projectConfirmBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    newProject.close()
+
+    const title = document.getElementById('projectTitle').value
+    let newProj = {}
+    newProj.title = title
+
+    project.push(newProj)
+
+    localStorage.setItem('projectData', JSON.stringify(project));
+
+})
+
+export function loadProjects(){
+    const projectContainer = document.createElement('div');
+    projectContainer.classList.add('projectContainer');
+
+    project.forEach((project) => {
+        const buttonContainer = document.createElement('div')
+        buttonContainer.setAttribute('id', project.title)
+
+        const projectBtn =  document.createElement('button')
+        projectBtn.classList.add(project.title)
+        projectBtn.textContent = project.title
+
+        const deleteProjectBtn = document.createElement('button')
+        deleteProjectBtn.classList.add(project.title)
+        deleteProjectBtn.textContent = 'Delete';
+
+        projectContainer.appendChild(buttonContainer)
+        buttonContainer.appendChild(projectBtn)
+        buttonContainer.appendChild(deleteProjectBtn)
+
+    
+    })
+    return projectContainer
+}
+
+

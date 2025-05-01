@@ -40,8 +40,9 @@
         </dialog>
         <button id="add">New Todo</button>
         <button id="today">Today</button>
+        <button id="newProjectBtn">Add a New Project</button>
         <button id="default">Default Project</button>
-            <div id="projects"></div>
+            <div id="projectList"></div>
         </nav>
         <dialog id="editDialog">
             <form>
@@ -70,6 +71,17 @@
                 <input type="hidden" id="itemId" name="itemId" value="" />
                 <button value="cancel" formMethod="dialog">Cancel</button>
                 <button id="editConfirmBtn" value="default">Confirm Edits</button>
+            </form>
+        </dialog>
+        <dialog id="newProject">
+            <form>
+                <h3>Project Name</h3>
+                <div class="formRow">
+                    <label for="projectTitle">Title</label>
+                    <input id='projectTitle' type="text">
+                    <button value="cancel" formMethod="dialog">Cancel</button>
+                    <button id="projectConfirmBtn" value="default">Confirm</button>
+                </div>
             </form>
         </dialog>
         <div id="list"></div>
