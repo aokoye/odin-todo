@@ -16,7 +16,7 @@ header {
 nav {
     display: flex;
     flex-direction: column;
-    width: 150px;
+    width: 250px;
     background-color: lightseagreen;
     padding: 10px;
 }

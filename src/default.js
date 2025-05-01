@@ -1,4 +1,4 @@
-import { clearContent, fillList } from './index.js'
+import { clearContent, clearProjectContent, fillList, fillProject } from './index.js'
 import { data, giveID, project, toLocalStorage } from './todos'
 import { dialog, showButton, closeButton, confirmBtn, deleteBtn } from "./buttons.js"
 
@@ -298,6 +298,8 @@ projectConfirmBtn.addEventListener("click", (event) => {
     project.push(newProj)
 
     localStorage.setItem('projectData', JSON.stringify(project));
+    clearProjectContent()
+    fillProject()
 
 })
 
@@ -306,24 +308,59 @@ export function loadProjects(){
     projectContainer.classList.add('projectContainer');
 
     project.forEach((project) => {
+        let noSpaces = project.title.replaceAll(' ', '');
+
         const buttonContainer = document.createElement('div')
-        buttonContainer.setAttribute('id', project.title)
+        buttonContainer.setAttribute('id', noSpaces)
 
         const projectBtn =  document.createElement('button')
-        projectBtn.classList.add(project.title)
+        projectBtn.classList.add(noSpaces)
         projectBtn.textContent = project.title
 
         const deleteProjectBtn = document.createElement('button')
-        deleteProjectBtn.classList.add(project.title)
+        deleteProjectBtn.classList.add(noSpaces)
         deleteProjectBtn.textContent = 'Delete';
 
         projectContainer.appendChild(buttonContainer)
         buttonContainer.appendChild(projectBtn)
         buttonContainer.appendChild(deleteProjectBtn)
+        deleteProjectBtn.addEventListener('click', delProject)
 
     
     })
     return projectContainer
 }
+
+function delProject() {
+    let buttonClass = this.className
+    console.log(buttonClass)
+    // const targetItemClass = buttonId
+    // function getItem(item) {
+    //     return item.id === targetItemId
+    // }
+
+    function isItem(item) {
+        return item.title === buttonClass
+    }
+
+    
+    let targetItem = project.find(isItem)
+ 
+    //finds the index
+    function itemIndex(id) {
+        return id === targetItem
+    }
+    
+    let idx = project.findIndex(itemIndex)
+    console.log(idx)
+
+    const remove = project.splice(idx, 1)
+    
+    remove
+    localStorage.setItem('projectData', JSON.stringify(project));
+    clearProjectContent()
+    fillProject()
+}
+
 
 

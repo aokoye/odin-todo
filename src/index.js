@@ -17,10 +17,15 @@ export function clearContent() {
     content.innerHTML = '';
 }
 
+export function clearProjectContent() {
+    const content = document.querySelector('#projectList');
+    content.innerHTML = '';
+}
+
+
 const listContainer = document.getElementById("list")
 
 export function fillList() {
-    // dataChange()
     listContainer.appendChild(loadTodos())
 }
 fillList()
