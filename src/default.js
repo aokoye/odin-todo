@@ -178,14 +178,37 @@ function delFunction() {
 }
 
 function doneFunction() {
+    let buttonId = this.parentNode.parentNode.getAttribute("id")
+    const targetItemId = buttonId
+    // function getItem(item) {
+    //     return item.id === targetItemId
+    // }
+
+    function isItem(item) {
+        return item.id === targetItemId
+    }
+
+    let targetItem = data.find(isItem)
+
+    //finds the index
+    function itemIndex(id) {
+        return id === targetItem
+    }
+    
+    let idx = data.findIndex(itemIndex)
+    console.log(idx)
+
+
     if (this.parentNode.parentNode.classList.contains('finished')) {
         this.parentNode.parentNode.classList.remove('finished');
+        data[idx].done = false
         localStorage.setItem('itemData', JSON.stringify(data));
     } else {
         this.parentNode.parentNode.classList.add('finished')
+        data[idx].done = true
         localStorage.setItem('itemData', JSON.stringify(data));
     }
-    localStorage.setItem('itemData', JSON.stringify(data));
+    
 }
 
 function hideFunction() {
