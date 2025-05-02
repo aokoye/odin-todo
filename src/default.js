@@ -1,4 +1,4 @@
-import { clearContent, clearProjectContent, fillList, fillProject } from './index.js'
+import { clearContent, clearProjectContent, fillList, specialProject } from './index.js'
 import { data, giveID, project, toLocalStorage } from './todos'
 import { dialog, showButton, closeButton, confirmBtn, deleteBtn } from "./buttons.js"
 
@@ -46,6 +46,7 @@ export function loadTodos() {
         const item = document.createElement('div')
         item.setAttribute('id', data.id)
         item.classList.add('todo')
+        item.classList.add(data.project)
         item.classList.add('unfinished')
         
         if (data.done === true) {
@@ -134,11 +135,13 @@ confirmBtn.addEventListener('click', (e) => {
     let description = document.getElementById('description').value;
     let due = document.getElementById('due').value;
     let importance = document.querySelector('input[name="importance"]:checked').value
+    let projOption = document.getElementById('projectOptions').value;
 
-    function newTodo(title, description, due, importance) {
+    function newTodo(title, description, due, importance, projOption) {
         let newObj = {}
         newObj.title = title;
         newObj.details = description
+        newObj.project = projOption
         newObj.importance = importance
         newObj.due = due;
         newObj.done = false;
@@ -148,11 +151,11 @@ confirmBtn.addEventListener('click', (e) => {
         localStorage.setItem('itemData', JSON.stringify(data));
     }
     
-    newTodo(title, description, due, importance)
+    newTodo(title, description, due, importance, projOption)
     giveID()
-    // toLocalStorage()
     return loadTodos()
 })
+
 
 function delFunction() {
     let buttonId = this.parentNode.parentNode.getAttribute("id")
@@ -331,6 +334,7 @@ export function loadProjects(){
 
         projectContainer.appendChild(buttonContainer)
         buttonContainer.appendChild(projectBtn)
+        // projectBtn.addEventListener('click', filterProjects)
         buttonContainer.appendChild(deleteProjectBtn)
         deleteProjectBtn.addEventListener('click', delProject)
 
@@ -338,6 +342,7 @@ export function loadProjects(){
     })
     return projectContainer
 }
+
 
 function delProject() {
     let buttonClass = this.className
@@ -369,6 +374,3 @@ function delProject() {
     clearProjectContent()
     fillProject()
 }
-
-
-

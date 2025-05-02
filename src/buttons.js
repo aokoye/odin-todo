@@ -13,8 +13,13 @@ showButton.addEventListener("click", (e) => {
     console.log(project)
 
     let select = document.getElementById('projectOptions');
+    let optElement = document.querySelectorAll('option')
     let options = project;
-    // let noSpaces = project.title.replaceAll(' ', '');
+    let projOption = document.createElement('option')
+    
+    document.querySelectorAll("option").forEach(e => e.remove());
+    select.appendChild(projOption)
+    projOption.textContent = 'Default'
 
     for(let i = 0; i < options.length; i++) {
         let opt = options[i].title;
