@@ -1,4 +1,4 @@
-import { clearContent, clearProjectContent, fillList, specialProject } from './index.js'
+import { clearContent, clearProjectContent, fillList, fillProject } from './index.js'
 import { data, giveID, project, toLocalStorage } from './todos'
 import { dialog, showButton, closeButton, confirmBtn, deleteBtn } from "./buttons.js"
 
@@ -334,7 +334,7 @@ export function loadProjects(){
 
         projectContainer.appendChild(buttonContainer)
         buttonContainer.appendChild(projectBtn)
-        // projectBtn.addEventListener('click', filterProjects)
+        projectBtn.addEventListener('click', filterProjects)
         buttonContainer.appendChild(deleteProjectBtn)
         deleteProjectBtn.addEventListener('click', delProject)
 
@@ -373,4 +373,106 @@ function delProject() {
     localStorage.setItem('projectData', JSON.stringify(project));
     clearProjectContent()
     fillProject()
+}
+
+const defaultProjectBtn = document.getElementById('default')
+defaultProjectBtn.addEventListener('click', (event) => {
+    clearContent()
+    fillList()
+})
+
+function filterProjects() {
+    // const todo = document.querySelectorAll('.todo')
+    document.querySelectorAll(".todo").forEach(e => e.remove());
+    const buttonClass = this.className
+    console.log(buttonClass)
+
+    function returnProjects() {
+        data.forEach((data) => {
+            if (data.project === buttonClass){
+                const item = document.createElement('div')
+                item.setAttribute('id', data.id)
+                item.classList.add('todo')
+                item.classList.add(data.project)
+                item.classList.add('unfinished')
+                
+                if (data.done === true) {
+                    item.classList.remove('unfinished')
+                    item.classList.add('finished')
+                }
+        
+                const title = document.createElement('p')
+                title.textContent = data.title
+                
+                const hidden = document.createElement('div')
+                hidden.classList.add('hidden')
+                hidden.classList.add('hide')
+        
+                const details = document.createElement('p')
+                details.classList.add('details')
+                details.textContent = data.details
+        
+                const due = document.createElement('p')
+                due.classList.add('due')
+                due.textContent = data.due
+        
+                const importance = document.createElement('p')
+                importance.classList.add('importance')
+                importance.textContent = data.importance
+        
+                const buttons = document.createElement('div')
+                buttons.classList.add('buttons')
+        
+                const delBtn = document.createElement('button');
+                delBtn.classList.add('delete');
+                delBtn.classList.add(data.id)
+                // delBtn.setAttribute('id', data.id)
+                delBtn.textContent = 'delete';
+                title.appendChild(delBtn)
+        
+        
+                const editBtn = document.createElement('button');
+                editBtn.classList.add('edit');
+                editBtn.classList.add(data.id)
+                editBtn.setAttribute('id', data.id)
+                editBtn.textContent = 'edit';
+                title.appendChild(editBtn)
+        
+                const doneBtn = document.createElement('button');
+                doneBtn.classList.add('done');
+                doneBtn.classList.add(data.id)
+                doneBtn.setAttribute('id', data.id)
+                doneBtn.textContent = 'finished';
+                title.appendChild(doneBtn)
+               
+                const moreBtn = document.createElement('button');
+                moreBtn.classList.add('more');
+                moreBtn.classList.add(data.id)
+                moreBtn.setAttribute('id', data.id)
+                moreBtn.textContent = 'more';
+                title.appendChild(moreBtn)
+        
+                list.appendChild(item)
+                item.appendChild(title)
+                item.appendChild(hidden)
+                hidden.appendChild(details)
+                hidden.appendChild(due)
+                hidden.appendChild(importance)
+                item.appendChild(buttons)
+                buttons.appendChild(moreBtn)
+                moreBtn.addEventListener('click', hideFunction)
+                buttons.appendChild(editBtn)
+                editBtn.addEventListener('click', editFunction)
+                buttons.appendChild(doneBtn)
+                doneBtn.addEventListener('click', doneFunction)
+                buttons.appendChild(delBtn)
+                delBtn.addEventListener('click', delFunction)
+            }
+           
+            
+        })
+        // toLocalStorage()
+        return list
+    }
+    returnProjects()
 }
