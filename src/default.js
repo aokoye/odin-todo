@@ -454,7 +454,6 @@ function filterProjects() {
                 const delBtn = document.createElement('button');
                 delBtn.classList.add('delete');
                 delBtn.classList.add(data.id)
-                // delBtn.setAttribute('id', data.id)
                 delBtn.textContent = 'delete';
                 title.appendChild(delBtn)
         
@@ -499,10 +498,125 @@ function filterProjects() {
            
             
         })
-        // toLocalStorage()
         return list
     }
     returnProjects()
 }
 
 // Today
+function filterToday() {
+    document.querySelectorAll(".todo").forEach(e => e.remove());
+
+    function returnProjects() {
+        data.forEach((data) => {
+            console.log(data.due)
+            
+            // const dueDate = data.due
+            let today = new Date();
+            let dd = String(today.getDate()).padStart(2, '0');
+            let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            let yyyy = today.getFullYear();
+
+            today = yyyy + '-' + mm + '-' + dd;
+
+            let startDate = new Date(data.due);
+            let endDate = new Date(today);
+
+            let difference = startDate.getTime() - endDate.getTime();
+
+            console.log(difference);
+
+            let TotalDiffDays = Math.ceil(difference / (1000 * 3600 * 24));
+            console.log(TotalDiffDays + " days :) ");
+
+            if (TotalDiffDays === 0){
+                const item = document.createElement('div')
+                item.setAttribute('id', data.id)
+                item.classList.add('todo')
+                item.classList.add(data.project)
+                item.classList.add('unfinished')
+                
+                if (data.done === true) {
+                    item.classList.remove('unfinished')
+                    item.classList.add('finished')
+                }
+        
+                const title = document.createElement('p')
+                title.textContent = data.title
+                
+                const hidden = document.createElement('div')
+                hidden.classList.add('hidden')
+                hidden.classList.add('hide')
+        
+                const details = document.createElement('p')
+                details.classList.add('details')
+                details.textContent = data.details
+        
+                const due = document.createElement('p')
+                due.classList.add('due')
+                due.textContent = data.due
+        
+                const importance = document.createElement('p')
+                importance.classList.add('importance')
+                importance.textContent = data.importance
+        
+                const buttons = document.createElement('div')
+                buttons.classList.add('buttons')
+        
+                const delBtn = document.createElement('button');
+                delBtn.classList.add('delete');
+                delBtn.classList.add(data.id)
+                delBtn.textContent = 'delete';
+                title.appendChild(delBtn)
+        
+        
+                const editBtn = document.createElement('button');
+                editBtn.classList.add('edit');
+                editBtn.classList.add(data.id)
+                editBtn.setAttribute('id', data.id)
+                editBtn.textContent = 'edit';
+                title.appendChild(editBtn)
+        
+                const doneBtn = document.createElement('button');
+                doneBtn.classList.add('done');
+                doneBtn.classList.add(data.id)
+                doneBtn.setAttribute('id', data.id)
+                doneBtn.textContent = 'finished';
+                title.appendChild(doneBtn)
+               
+                const moreBtn = document.createElement('button');
+                moreBtn.classList.add('more');
+                moreBtn.classList.add(data.id)
+                moreBtn.setAttribute('id', data.id)
+                moreBtn.textContent = 'more';
+                title.appendChild(moreBtn)
+        
+                list.appendChild(item)
+                item.appendChild(title)
+                item.appendChild(hidden)
+                hidden.appendChild(details)
+                hidden.appendChild(due)
+                hidden.appendChild(importance)
+                item.appendChild(buttons)
+                buttons.appendChild(moreBtn)
+                moreBtn.addEventListener('click', hideFunction)
+                buttons.appendChild(editBtn)
+                editBtn.addEventListener('click', editFunction)
+                buttons.appendChild(doneBtn)
+                doneBtn.addEventListener('click', doneFunction)
+                buttons.appendChild(delBtn)
+                delBtn.addEventListener('click', delFunction)
+            }
+           
+            
+        })
+        return list
+    }
+    returnProjects()
+}
+
+const todayBtn = document.getElementById('today')
+todayBtn.addEventListener('click', (event) => {
+    clearContent()
+    filterToday()
+})
