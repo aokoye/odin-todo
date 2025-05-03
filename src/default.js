@@ -265,6 +265,7 @@ editConfirmBtn.addEventListener("click", (event) => {
     const description = document.getElementById('editDescription').value
     const due = document.getElementById('editDue').value
     const editOptions = document.getElementById('editOptions').value
+    const importance = document.querySelector('input[name="editImportance"]:checked').value
 
     let buttonId = document.getElementById('itemId').value
     const targetItemId = buttonId
@@ -297,6 +298,10 @@ editConfirmBtn.addEventListener("click", (event) => {
 
     if(editOptions != '') {
         data[idx].project = editOptions
+    }
+
+    if(importance != '') {
+        data[idx].importance = importance
     }
 
     console.log(data[idx].due)
@@ -501,5 +506,3 @@ function filterProjects() {
 }
 
 // Today
-
-}

@@ -71,19 +71,13 @@
                     </select>
                 </div>
                 <div class="formRow">
-                    <label for="projectOptions">Choose a project:</label>
-                    <select id="projectOptions">
-                        <option>Default</option>
-                    </select>
-                </div>
-                <div class="formRow">
                     <p>Importance:</p>
                     <label for="editLow">Low</label>
-                    <input type="radio" id="editLow" value="low">
+                    <input type="radio" id="editLow" name = "editImportance" value="low">
                     <label for="editMedium">Medium</label>
-                    <input type="radio" id="editMedium" value="medium">
+                    <input type="radio" id="editMedium" name = "editImportance" value="medium">
                     <label for="editHigh">High</label>
-                    <input type="radio" id="editHigh" value="high">
+                    <input type="radio" id="editHigh" name = "editImportance" value="high">
                 </div>
                 <input type="hidden" id="itemId" name="itemId" value="" />
                 <button value="cancel" formMethod="dialog">Cancel</button>
