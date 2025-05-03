@@ -13,7 +13,6 @@ showButton.addEventListener("click", (e) => {
     console.log(project)
 
     let select = document.getElementById('projectOptions');
-    let optElement = document.querySelectorAll('option')
     let options = project;
     let projOption = document.createElement('option')
     
@@ -28,6 +27,26 @@ showButton.addEventListener("click", (e) => {
         el.value = options[i].title.replaceAll(' ', '');
         select.appendChild(el);
     }
+
+    //Importance
+    let impSelect = document.getElementById('importance')
+    let optElementDefault = document.createElement('option')
+    let optElementLow = document.createElement('option')
+    let optElementMed = document.createElement('option')
+    let optElementHigh = document.createElement('option')
+
+    impSelect.appendChild(optElementDefault);
+    optElementDefault.textContent = 'Choose importance level';
+    optElementDefault.setAttribute('value', '');
+    impSelect.appendChild(optElementLow);
+    optElementLow.textContent = 'Low';
+    optElementLow.setAttribute('value', 'low');
+    impSelect.appendChild(optElementMed);
+    optElementMed.textContent = 'Medium';
+    optElementMed.setAttribute('value', 'medium');
+    impSelect.appendChild(optElementHigh);
+    optElementHigh.textContent = 'High';
+    optElementHigh.setAttribute('value', 'high');
 });
 
 // "Close" button closes the dialog

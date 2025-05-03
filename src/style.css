@@ -36,3 +36,7 @@ nav {
 .hide {
     display: none;
 }
+
+#tododialog {
+height: 300px;
+}

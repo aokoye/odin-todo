@@ -134,7 +134,7 @@ confirmBtn.addEventListener('click', (e) => {
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
     let due = document.getElementById('due').value;
-    let importance = document.querySelector('input[name="importance"]:checked').value
+    let importance = document.getElementById('importance').value
     let projOption = document.getElementById('projectOptions').value;
 
     function newTodo(title, description, due, importance, projOption) {
@@ -255,6 +255,26 @@ function editFunction(buttonId) {
          el.value = options[i].title.replaceAll(' ', '');
          select.appendChild(el);
      }
+
+     //Importance
+    let impSelect = document.getElementById('editImportance')
+    let optElementDefault = document.createElement('option')
+    let optElementLow = document.createElement('option')
+    let optElementMed = document.createElement('option')
+    let optElementHigh = document.createElement('option')
+
+    impSelect.appendChild(optElementDefault);
+    optElementDefault.textContent = 'Choose importance level';
+    optElementDefault.setAttribute('value', '');
+    impSelect.appendChild(optElementLow);
+    optElementLow.textContent = 'Low';
+    optElementLow.setAttribute('value', 'low');
+    impSelect.appendChild(optElementMed);
+    optElementMed.textContent = 'Medium';
+    optElementMed.setAttribute('value', 'medium');
+    impSelect.appendChild(optElementHigh);
+    optElementHigh.textContent = 'High';
+    optElementHigh.setAttribute('value', 'high');
 }
 
 editConfirmBtn.addEventListener("click", (event) => {
@@ -265,9 +285,9 @@ editConfirmBtn.addEventListener("click", (event) => {
     const description = document.getElementById('editDescription').value
     const due = document.getElementById('editDue').value
     const editOptions = document.getElementById('editOptions').value
-    const importance = document.querySelector('input[name="editImportance"]:checked').value
+    const importance = document.getElementById('editImportance').value
 
-    let buttonId = document.getElementById('itemId').value
+    let buttonId = document.getElementById('itemId')?.value
     const targetItemId = buttonId
 
     function isItem(item) {
@@ -290,7 +310,7 @@ editConfirmBtn.addEventListener("click", (event) => {
     
     if(description != '') {
         data[idx].description = description
-    }
+    } 
 
     if(due != '') {
         data[idx].due = due
@@ -300,12 +320,9 @@ editConfirmBtn.addEventListener("click", (event) => {
         data[idx].project = editOptions
     }
 
-    if(importance != '') {
+    if(importance != '' ) {
         data[idx].importance = importance
     }
-
-    console.log(data[idx].due)
-    console.log('good bye')
 
     localStorage.setItem('itemData', JSON.stringify(data));
     clearContent()
