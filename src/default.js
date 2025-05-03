@@ -2,6 +2,14 @@ import { clearContent, clearProjectContent, fillList, fillProject } from './inde
 import { data, giveID, project, toLocalStorage } from './todos'
 import { dialog, showButton, closeButton, confirmBtn, deleteBtn } from "./buttons.js"
 
+//images
+import moreImg from './more.svg'
+import editImg from './edit.svg'
+import doneImg from './check.svg'
+import deleteImg from './trash.svg'
+
+
+
 dialog
 showButton
 closeButton
@@ -43,6 +51,16 @@ export function loadTodos() {
     
 
     data.forEach((data) => {
+        //Icons
+        const moreIcon = document.createElement("img");
+        moreIcon.src = moreImg;
+        const editIcon = document.createElement("img");
+        editIcon.src = editImg;
+        const doneIcon = document.createElement("img");
+        doneIcon.src = doneImg;
+        const deleteIcon = document.createElement("img");
+        deleteIcon.src = deleteImg;
+
         const item = document.createElement('div')
         item.setAttribute('id', data.id)
         item.classList.add('todo')
@@ -80,7 +98,8 @@ export function loadTodos() {
         delBtn.classList.add('delete');
         delBtn.classList.add(data.id)
         // delBtn.setAttribute('id', data.id)
-        delBtn.textContent = 'delete';
+        // delBtn.textContent = 'delete';
+        delBtn.appendChild(deleteIcon)
         title.appendChild(delBtn)
 
 
@@ -88,21 +107,24 @@ export function loadTodos() {
         editBtn.classList.add('edit');
         editBtn.classList.add(data.id)
         editBtn.setAttribute('id', data.id)
-        editBtn.textContent = 'edit';
+        editBtn.appendChild(editIcon)
+        // editBtn.textContent = 'edit';
         title.appendChild(editBtn)
 
         const doneBtn = document.createElement('button');
         doneBtn.classList.add('done');
         doneBtn.classList.add(data.id)
         doneBtn.setAttribute('id', data.id)
-        doneBtn.textContent = 'finished';
+        doneBtn.appendChild(doneIcon)
+        // doneBtn.textContent = 'finished';
         title.appendChild(doneBtn)
        
         const moreBtn = document.createElement('button');
         moreBtn.classList.add('more');
-        moreBtn.classList.add(data.id)
+        moreBtn.classList.add(data.id);
         moreBtn.setAttribute('id', data.id)
-        moreBtn.textContent = 'more';
+        moreBtn.appendChild(moreIcon)
+        // moreBtn.textContent = 'more';
         title.appendChild(moreBtn)
 
         list.appendChild(item)
@@ -418,6 +440,8 @@ function delProject() {
     localStorage.setItem('projectData', JSON.stringify(project));
     clearProjectContent()
     fillProject()
+    clearContent()
+    fillList()
 }
 
 const defaultProjectBtn = document.getElementById('default')
@@ -434,6 +458,16 @@ function filterProjects() {
 
     function returnProjects() {
         data.forEach((data) => {
+            //Icons
+            const moreIcon = document.createElement("img");
+            moreIcon.src = moreImg;
+            const editIcon = document.createElement("img");
+            editIcon.src = editImg;
+            const doneIcon = document.createElement("img");
+            doneIcon.src = doneImg;
+            const deleteIcon = document.createElement("img");
+            deleteIcon.src = deleteImg;
+
             if (data.project === buttonClass){
                 const item = document.createElement('div')
                 item.setAttribute('id', data.id)
@@ -470,31 +504,35 @@ function filterProjects() {
         
                 const delBtn = document.createElement('button');
                 delBtn.classList.add('delete');
-                delBtn.classList.add(data.id)
-                delBtn.textContent = 'delete';
-                title.appendChild(delBtn)
+                delBtn.classList.add(data.id);
+                delBtn.appendChild(deleteIcon);
+                // delBtn.textContent = 'delete';
+                title.appendChild(delBtn);
         
         
                 const editBtn = document.createElement('button');
                 editBtn.classList.add('edit');
-                editBtn.classList.add(data.id)
-                editBtn.setAttribute('id', data.id)
-                editBtn.textContent = 'edit';
-                title.appendChild(editBtn)
+                editBtn.classList.add(data.id);
+                editBtn.setAttribute('id', data.id);
+                editBtn.appendChild(editIcon);
+                // editBtn.textContent = 'edit';
+                title.appendChild(editBtn);
         
                 const doneBtn = document.createElement('button');
                 doneBtn.classList.add('done');
-                doneBtn.classList.add(data.id)
-                doneBtn.setAttribute('id', data.id)
-                doneBtn.textContent = 'finished';
-                title.appendChild(doneBtn)
+                doneBtn.classList.add(data.id);
+                doneBtn.setAttribute('id', data.id);
+                doneBtn.appendChild(doneIcon);
+                // doneBtn.textContent = 'finished';
+                title.appendChild(doneBtn);
                
                 const moreBtn = document.createElement('button');
                 moreBtn.classList.add('more');
-                moreBtn.classList.add(data.id)
-                moreBtn.setAttribute('id', data.id)
-                moreBtn.textContent = 'more';
-                title.appendChild(moreBtn)
+                moreBtn.classList.add(data.id);
+                moreBtn.setAttribute('id', data.id);
+                moreBtn.appendChild(moreIcon);
+                // moreBtn.textContent = 'more';
+                title.appendChild(moreBtn);
         
                 list.appendChild(item)
                 item.appendChild(title)
@@ -526,7 +564,15 @@ function filterToday() {
 
     function returnProjects() {
         data.forEach((data) => {
-            console.log(data.due)
+            //Icons
+            const moreIcon = document.createElement("img");
+            moreIcon.src = moreImg;
+            const editIcon = document.createElement("img");
+            editIcon.src = editImg;
+            const doneIcon = document.createElement("img");
+            doneIcon.src = doneImg;
+            const deleteIcon = document.createElement("img");
+            deleteIcon.src = deleteImg;
             
             // const dueDate = data.due
             let today = new Date();
@@ -582,31 +628,35 @@ function filterToday() {
         
                 const delBtn = document.createElement('button');
                 delBtn.classList.add('delete');
-                delBtn.classList.add(data.id)
-                delBtn.textContent = 'delete';
-                title.appendChild(delBtn)
+                delBtn.classList.add(data.id);
+                delBtn.appendChild(deleteIcon);
+                // delBtn.textContent = 'delete';
+                title.appendChild(delBtn);
         
         
                 const editBtn = document.createElement('button');
                 editBtn.classList.add('edit');
-                editBtn.classList.add(data.id)
-                editBtn.setAttribute('id', data.id)
-                editBtn.textContent = 'edit';
-                title.appendChild(editBtn)
+                editBtn.classList.add(data.id);
+                editBtn.setAttribute('id', data.id);
+                editBtn.appendChild(editIcon);
+                // editBtn.textContent = 'edit';
+                title.appendChild(editBtn);
         
                 const doneBtn = document.createElement('button');
                 doneBtn.classList.add('done');
-                doneBtn.classList.add(data.id)
-                doneBtn.setAttribute('id', data.id)
-                doneBtn.textContent = 'finished';
-                title.appendChild(doneBtn)
+                doneBtn.classList.add(data.id);
+                doneBtn.setAttribute('id', data.id);
+                doneBtn.appendChild(doneIcon);
+                // doneBtn.textContent = 'finished';
+                title.appendChild(doneBtn);
                
                 const moreBtn = document.createElement('button');
                 moreBtn.classList.add('more');
-                moreBtn.classList.add(data.id)
-                moreBtn.setAttribute('id', data.id)
-                moreBtn.textContent = 'more';
-                title.appendChild(moreBtn)
+                moreBtn.classList.add(data.id);
+                moreBtn.setAttribute('id', data.id);
+                moreBtn.appendChild(moreIcon);
+                // moreBtn.textContent = 'more';
+                title.appendChild(moreBtn);
         
                 list.appendChild(item)
                 item.appendChild(title)
