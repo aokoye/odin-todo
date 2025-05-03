@@ -175,6 +175,7 @@ confirmBtn.addEventListener('click', (e) => {
     
     newTodo(title, description, due, importance, projOption)
     giveID()
+    document.getElementById('addTodo').reset()
     return loadTodos()
 })
 
@@ -347,6 +348,7 @@ editConfirmBtn.addEventListener("click", (event) => {
     }
 
     localStorage.setItem('itemData', JSON.stringify(data));
+    document.getElementById('editTodo').reset()
     clearContent()
     fillList()
     
@@ -376,9 +378,15 @@ projectConfirmBtn.addEventListener("click", (event) => {
     project.push(newProj)
 
     localStorage.setItem('projectData', JSON.stringify(project));
+    document.getElementById('projectForm').reset()
     clearProjectContent()
     fillProject()
 
+})
+
+const projCancelBtn = document.getElementById('projectCancel')
+projCancelBtn.addEventListener('click', (event) => {
+    document.getElementById('projectForm').reset()
 })
 
 export function loadProjects(){

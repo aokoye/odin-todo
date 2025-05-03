@@ -10,7 +10,7 @@
     <div id="container">
         <nav>
         <dialog id="tododialog">
-            <form>
+            <form id="addTodo">
                 <div class="formRow">
                     <label for="title">Title</label>
                     <input id='title' type="text" required>
@@ -62,7 +62,7 @@
             <div id="projectList"></div>
         </nav>
         <dialog id="editDialog">
-            <form>
+            <form id="editTodo">
                 <h3>Edit Your Todo</h3>
                 <div class="formRow">
                     <label for="editTitle">Title</label>
@@ -109,12 +109,12 @@
             </form>
         </dialog>
         <dialog id="newProject">
-            <form>
+            <form id="projectForm">
                 <h3>Project Name</h3>
                 <div class="formRow">
                     <label for="projectTitle">Title</label>
                     <input id='projectTitle' type="text">
-                    <button value="cancel" formMethod="dialog">Cancel</button>
+                    <button value="cancel" id = "projectCancel" formMethod="dialog">Cancel</button>
                     <button id="projectConfirmBtn" value="default">Confirm</button>
                 </div>
             </form>

@@ -52,6 +52,7 @@ showButton.addEventListener("click", (e) => {
 // "Close" button closes the dialog
 closeButton.addEventListener("click", (e) => {
     e.preventDefault();
+    document.getElementById('addTodo').reset()
     dialog.close();
 });
 
