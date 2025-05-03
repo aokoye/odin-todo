@@ -237,6 +237,24 @@ function editFunction(buttonId) {
     let id = this.parentNode.parentNode.getAttribute("id")
     itemId === id;
     document.getElementById('itemId').value = id
+
+     // Dropdown options
+     let select = document.getElementById('editOptions');
+     let optElement = document.querySelectorAll('option')
+     let options = project;
+     let projOption = document.createElement('option')
+     
+     document.querySelectorAll("option").forEach(e => e.remove());
+     select.appendChild(projOption)
+     projOption.textContent = 'Default'
+ 
+     for(let i = 0; i < options.length; i++) {
+         let opt = options[i].title;
+         let el = document.createElement('option')
+         el.textContent = opt;
+         el.value = options[i].title.replaceAll(' ', '');
+         select.appendChild(el);
+     }
 }
 
 editConfirmBtn.addEventListener("click", (event) => {
@@ -246,7 +264,8 @@ editConfirmBtn.addEventListener("click", (event) => {
     const title = document.getElementById('editTitle').value
     const description = document.getElementById('editDescription').value
     const due = document.getElementById('editDue').value
-    
+    const editOptions = document.getElementById('editOptions').value
+
     let buttonId = document.getElementById('itemId').value
     const targetItemId = buttonId
 
@@ -274,6 +293,10 @@ editConfirmBtn.addEventListener("click", (event) => {
 
     if(due != '') {
         data[idx].due = due
+    }
+
+    if(editOptions != '') {
+        data[idx].project = editOptions
     }
 
     console.log(data[idx].due)
@@ -475,4 +498,8 @@ function filterProjects() {
         return list
     }
     returnProjects()
+}
+
+// Today
+
 }
