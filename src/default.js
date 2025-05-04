@@ -47,10 +47,11 @@ export function loadTodos() {
 
     // const item = document.createElement('div');
     // item.classList.add('item');
-
+    
     
 
     data.forEach((data) => {
+        const dueDate = new Date(data.due)
         //Icons
         const moreIcon = document.createElement("img");
         moreIcon.src = moreImg;
@@ -81,15 +82,15 @@ export function loadTodos() {
 
         const details = document.createElement('p')
         details.classList.add('details')
-        details.textContent = data.details
+        details.textContent = 'Details: ' + data.details
 
         const due = document.createElement('p')
         due.classList.add('due')
-        due.textContent = data.due
+        due.textContent = 'Due on: ' + dueDate.toDateString()
 
         const importance = document.createElement('p')
         importance.classList.add('importance')
-        importance.textContent = data.importance
+        importance.textContent = 'Importance: ' + data.importance
 
         const buttons = document.createElement('div')
         buttons.classList.add('buttons')
@@ -471,6 +472,8 @@ function filterProjects() {
 
     function returnProjects() {
         data.forEach((data) => {
+            const dueDate = new Date(data.due)
+
             //Icons
             const moreIcon = document.createElement("img");
             moreIcon.src = moreImg;
@@ -502,15 +505,15 @@ function filterProjects() {
         
                 const details = document.createElement('p')
                 details.classList.add('details')
-                details.textContent = data.details
+                details.textContent = 'Details: ' + data.details
         
                 const due = document.createElement('p')
                 due.classList.add('due')
-                due.textContent = data.due
+                due.textContent = 'Due on: ' + dueDate.toDateString()
         
                 const importance = document.createElement('p')
                 importance.classList.add('importance')
-                importance.textContent = data.importance
+                importance.textContent = 'Importance: ' + data.importance
         
                 const buttons = document.createElement('div')
                 buttons.classList.add('buttons')
@@ -606,6 +609,7 @@ function filterToday() {
             console.log(TotalDiffDays + " days :) ");
 
             if (TotalDiffDays === 0){
+                const dueDate = new Date(data.due)
                 const item = document.createElement('div')
                 item.setAttribute('id', data.id)
                 item.classList.add('todo')
@@ -626,15 +630,15 @@ function filterToday() {
         
                 const details = document.createElement('p')
                 details.classList.add('details')
-                details.textContent = data.details
+                details.textContent = 'Details: ' + data.details
         
                 const due = document.createElement('p')
                 due.classList.add('due')
-                due.textContent = data.due
+                due.textContent = 'Due on: ' + dueDate.toDateString()
         
                 const importance = document.createElement('p')
                 importance.classList.add('importance')
-                importance.textContent = data.importance
+                importance.textContent = 'Importance: ' + data.importance
         
                 const buttons = document.createElement('div')
                 buttons.classList.add('buttons')
