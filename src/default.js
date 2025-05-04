@@ -390,10 +390,14 @@ projCancelBtn.addEventListener('click', (event) => {
 })
 
 export function loadProjects(){
+    
     const projectContainer = document.createElement('div');
     projectContainer.classList.add('projectContainer');
 
     project.forEach((project) => {
+        const deleteIcon = document.createElement("img");
+        deleteIcon.src = deleteImg;
+
         let noSpaces = project.title.replaceAll(' ', '');
 
         const buttonContainer = document.createElement('div')
@@ -405,7 +409,8 @@ export function loadProjects(){
 
         const deleteProjectBtn = document.createElement('button')
         deleteProjectBtn.classList.add(noSpaces)
-        deleteProjectBtn.textContent = 'Delete';
+        deleteProjectBtn.appendChild(deleteIcon)
+        // deleteProjectBtn.textContent = 'Delete';
 
         projectContainer.appendChild(buttonContainer)
         buttonContainer.appendChild(projectBtn)
