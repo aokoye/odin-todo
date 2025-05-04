@@ -23,7 +23,11 @@ header {
     display: flex;
     height: 100px;
     border-bottom: 4px solid #8EA604;
-    padding-left: 10px;
+    padding-left: 20px;
+}
+
+span {
+    margin-left: 5px;
 }
 
 h1 {
@@ -45,9 +49,11 @@ nav {
     justify-content: flex-start;
     align-items: flex-start;
     width: 350px;
+    padding: 30px 0 0 30px;
     border-right: 4px solid #8EA604;
-    padding: 10px;
+    /* padding: 10px; */
     font-size: 18px;
+    height: 100vh;
 
 }
 
@@ -55,7 +61,21 @@ nav p {
     font-size: 17px;
 }
 
-
+.newImg,
+.todayImg,
+.newProjImg,
+.defaultProjImg {
+    margin-right: 10px;
+}
+#add, 
+#today, 
+#newProjectBtn, 
+#default {
+    margin-bottom: 15px;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+}
 
 #list {
     padding: 10px;
@@ -119,9 +139,6 @@ button img {
 #default {
     margin-bottom: 15px;
     text-decoration: underline;
-    /* background-color: #58a7c2;
-    padding: 1rem 2rem;
-    border-radius: 10px; */
 }
 
 #projectList {
@@ -134,8 +151,12 @@ button img {
     height: 3rem;
 }
 
-.finished p {
+.finished > p {
     text-decoration: line-through;
+}
+
+.details {
+    text-decoration: none;
 }
 
 .unfinished p {
