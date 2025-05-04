@@ -16,9 +16,12 @@ header {
 nav {
     display: flex;
     flex-direction: column;
-    width: 250px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 350px;
     border-right: 4px solid #8EA604;
     padding: 10px;
+
 }
 
 
@@ -56,11 +59,26 @@ button img {
     height: 30px;
 }
 
-nav {
+
+#add,
+#today,
+#newProjectBtn,
+#default {
+    margin-bottom: 15px;
+    text-decoration: underline;
+    /* background-color: #58a7c2;
+    padding: 1rem 2rem;
+    border-radius: 10px; */
+}
+
+#projectList {
+    margin-top: 10px;
+}
+
+.projectContainer div {
     display: flex;
-    flex-direction: column;
-   justify-content: flex-start;
-   align-items: flex-start;
+    gap: 7px;
+    height: 3rem;
 }
 
 .finished p {
