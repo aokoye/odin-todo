@@ -1,6 +1,6 @@
 import { clearContent, clearProjectContent, fillList, fillProject } from './index.js'
-import { data, giveID, project, toLocalStorage } from './todos'
-import { dialog, showButton, closeButton, confirmBtn, deleteBtn } from "./buttons.js"
+import { data, giveID, project } from './todos'
+import { dialog, showButton, closeButton, confirmBtn } from "./buttons.js"
 
 //images
 import moreImg from './more.svg'
@@ -14,9 +14,6 @@ dialog
 showButton
 closeButton
 confirmBtn
-
-// const dataFromStorage = localStorage.getItem('itemData')
-// const data = JSON.parse(dataFromStorage)
 
 const storageData = localStorage.getItem("itemData")
 const dataString = JSON.stringify(data)
@@ -98,8 +95,6 @@ export function loadTodos() {
         const delBtn = document.createElement('button');
         delBtn.classList.add('delete');
         delBtn.classList.add(data.id)
-        // delBtn.setAttribute('id', data.id)
-        // delBtn.textContent = 'delete';
         delBtn.appendChild(deleteIcon)
         title.appendChild(delBtn)
 
@@ -109,7 +104,6 @@ export function loadTodos() {
         editBtn.classList.add(data.id)
         editBtn.setAttribute('id', data.id)
         editBtn.appendChild(editIcon)
-        // editBtn.textContent = 'edit';
         title.appendChild(editBtn)
 
         const doneBtn = document.createElement('button');
@@ -117,7 +111,6 @@ export function loadTodos() {
         doneBtn.classList.add(data.id)
         doneBtn.setAttribute('id', data.id)
         doneBtn.appendChild(doneIcon)
-        // doneBtn.textContent = 'finished';
         title.appendChild(doneBtn)
        
         const moreBtn = document.createElement('button');
@@ -125,7 +118,6 @@ export function loadTodos() {
         moreBtn.classList.add(data.id);
         moreBtn.setAttribute('id', data.id)
         moreBtn.appendChild(moreIcon)
-        // moreBtn.textContent = 'more';
         title.appendChild(moreBtn)
 
         list.appendChild(item)
@@ -145,7 +137,6 @@ export function loadTodos() {
         delBtn.addEventListener('click', delFunction)
         
     })
-    // toLocalStorage()
     return list
 }
 
@@ -184,9 +175,6 @@ confirmBtn.addEventListener('click', (e) => {
 function delFunction() {
     let buttonId = this.parentNode.parentNode.getAttribute("id")
     const targetItemId = buttonId
-    // function getItem(item) {
-    //     return item.id === targetItemId
-    // }
 
     function isItem(item) {
         return item.id === targetItemId
@@ -213,9 +201,6 @@ function delFunction() {
 function doneFunction() {
     let buttonId = this.parentNode.parentNode.getAttribute("id")
     const targetItemId = buttonId
-    // function getItem(item) {
-    //     return item.id === targetItemId
-    // }
 
     function isItem(item) {
         return item.id === targetItemId
@@ -264,7 +249,6 @@ function editFunction(buttonId) {
 
      // Dropdown options
      let select = document.getElementById('editOptions');
-     let optElement = document.querySelectorAll('option')
      let options = project;
      let projOption = document.createElement('option')
      
@@ -359,7 +343,6 @@ editConfirmBtn.addEventListener("click", (event) => {
 //Project code'
 
 const newProjectBtn = document.querySelector('#newProjectBtn');
-// const newProject = document.querySelector('#newProject')
 const projectConfirmBtn = newProject.querySelector('#projectConfirmBtn')
 
 newProjectBtn.addEventListener('click',(event) => {
@@ -411,7 +394,6 @@ export function loadProjects(){
         const deleteProjectBtn = document.createElement('button')
         deleteProjectBtn.classList.add(noSpaces)
         deleteProjectBtn.appendChild(deleteIcon)
-        // deleteProjectBtn.textContent = 'Delete';
 
         projectContainer.appendChild(buttonContainer)
         buttonContainer.appendChild(projectBtn)
@@ -428,10 +410,6 @@ export function loadProjects(){
 function delProject() {
     let buttonClass = this.className
     console.log(buttonClass)
-    // const targetItemClass = buttonId
-    // function getItem(item) {
-    //     return item.id === targetItemId
-    // }
 
     function isItem(item) {
         return item.title === buttonClass
@@ -465,7 +443,6 @@ defaultProjectBtn.addEventListener('click', (event) => {
 })
 
 function filterProjects() {
-    // const todo = document.querySelectorAll('.todo')
     document.querySelectorAll(".todo").forEach(e => e.remove());
     const buttonClass = this.className
     console.log(buttonClass)
@@ -522,7 +499,6 @@ function filterProjects() {
                 delBtn.classList.add('delete');
                 delBtn.classList.add(data.id);
                 delBtn.appendChild(deleteIcon);
-                // delBtn.textContent = 'delete';
                 title.appendChild(delBtn);
         
         
@@ -539,7 +515,6 @@ function filterProjects() {
                 doneBtn.classList.add(data.id);
                 doneBtn.setAttribute('id', data.id);
                 doneBtn.appendChild(doneIcon);
-                // doneBtn.textContent = 'finished';
                 title.appendChild(doneBtn);
                
                 const moreBtn = document.createElement('button');
@@ -547,7 +522,6 @@ function filterProjects() {
                 moreBtn.classList.add(data.id);
                 moreBtn.setAttribute('id', data.id);
                 moreBtn.appendChild(moreIcon);
-                // moreBtn.textContent = 'more';
                 title.appendChild(moreBtn);
         
                 list.appendChild(item)
@@ -647,7 +621,6 @@ function filterToday() {
                 delBtn.classList.add('delete');
                 delBtn.classList.add(data.id);
                 delBtn.appendChild(deleteIcon);
-                // delBtn.textContent = 'delete';
                 title.appendChild(delBtn);
         
         
@@ -656,7 +629,6 @@ function filterToday() {
                 editBtn.classList.add(data.id);
                 editBtn.setAttribute('id', data.id);
                 editBtn.appendChild(editIcon);
-                // editBtn.textContent = 'edit';
                 title.appendChild(editBtn);
         
                 const doneBtn = document.createElement('button');
@@ -664,7 +636,6 @@ function filterToday() {
                 doneBtn.classList.add(data.id);
                 doneBtn.setAttribute('id', data.id);
                 doneBtn.appendChild(doneIcon);
-                // doneBtn.textContent = 'finished';
                 title.appendChild(doneBtn);
                
                 const moreBtn = document.createElement('button');
@@ -672,7 +643,6 @@ function filterToday() {
                 moreBtn.classList.add(data.id);
                 moreBtn.setAttribute('id', data.id);
                 moreBtn.appendChild(moreIcon);
-                // moreBtn.textContent = 'more';
                 title.appendChild(moreBtn);
         
                 list.appendChild(item)

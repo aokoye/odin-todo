@@ -1,4 +1,4 @@
-import { data, giveID, project, toLocalStorage } from './todos'
+import { project } from './todos'
 
 export const dialog = document.querySelector("dialog");
 export const showButton = document.querySelector("dialog + button");
