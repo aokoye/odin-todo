@@ -94,6 +94,7 @@ nav p {
     grid-column: 1;
     grid-row: 1;
     margin-top: 24px;
+    font-size: 17px;
 }
 
 .hidden {
@@ -163,7 +164,25 @@ button img {
     text-decoration: none;
 }
 
+dialog button {
+    display: inline-block;
+    border: none;
+    padding: .5rem 1rem;
+    margin: 10px 0 10px 10px;
+    /* margin-left: 10px; */
+    text-decoration: none;
+    background: #8EA604;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
 
-#tododialog {
-height: 300px;
+.formRow {
+    margin: 10px
+}
+
+dialog h3 {
+    margin-top: 5px;
 }
