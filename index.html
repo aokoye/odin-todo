@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+<script defer src="main.js"></script></head>
+<body>
+    <header>
+        <h1>Your Todo List <span>Procrastination be gone!</span></h1>
+    </header>
+    <div id="container">
+        <nav>
+        <dialog id="tododialog">
+            <form id="addTodo">
+                <div class="formRow">
+                    <label for="title">Title:</label>
+                    <input id='title' type="text" required>
+                </div>
+                <div class="formRow">
+                    <label for="description">Description:</label>
+                    <input type="text" name="description" id="description">
+                </div>
+                <div class="formRow">
+                    <label for="due">Due date:</label>
+                    <input type="date" name="due" id="due">
+                </div>
+                <div class="formRow">
+                    <label for="projectOptions">Choose a project:</label>
+                    <select id="projectOptions">
+                        <option>Default</option>
+                    </select>
+                </div>
+                <div class="formRow">
+                    <label for="importance">Importance:</label>
+                    <select id='importance'>
+                        <option value="">Choose level of importance</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <button value="cancel" formMethod="dialog">Cancel</button>
+                <button id="confirmBtn" value="default">Confirm</button>
+            </form>
+        </dialog>
+        <button id="add"><img src="b378ae337a6d593a0ab6.svg" class="newImg" alt="Calender image">New Todo</button>
+        <button id="today"><img src="c1d51bba066bc1de1bd1.svg" class="todayImg" alt="Calender image">Today</button>
+        <h2>Projects</h2>
+        <button id="newProjectBtn"><img src="fdaa27a59dc7c5060e88.svg" class="newProjImg" alt="">Add a New Project</button>
+        <button id="default"><img src="03dae99625a0206f795c.svg" class="defaultProjImg" alt="">Default Project</button>
+        
+            <div id="projectList"></div>
+        </nav>
+        <dialog id="editDialog">
+            <form id="editTodo">
+                <h3>Edit Your Todo</h3>
+                <div class="formRow">
+                    <label for="editTitle">Title:</label>
+                    <input id='editTitle' type="text">
+                </div>
+                <div class="formRow">
+                    <label for="editDescription">Description:</label>
+                    <input type="text" name="editDescription" id="editDescription">
+                </div>
+                <div class="formRow">
+                    <label for="editDue">Due date:</label>
+                    <input type="date" name="editDue" id="editDue">
+                </div>
+                <div class="formRow">
+                    <label for="editOptions">Choose a project:</label>
+                    <select id="editOptions">
+                        <option>Default</option>
+                    </select>
+                </div>
+                <div class="formRow">
+                    <label for="editImportance">Importance:</label>
+                    <select id='editImportance'>
+                        <option value="">Choose level of importance:/option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+    
+                <input type="hidden" id="itemId" name="itemId" value="" />
+                <button value="cancel" formMethod="dialog">Cancel</button>
+                <button id="editConfirmBtn" value="default">Confirm Edits</button>
+            </form>
+        </dialog>
+        <dialog id="newProject">
+            <form id="projectForm">
+                <h3>Project name:</h3>
+                <div class="formRow">
+                    <label for="projectTitle">Title</label>
+                    <input id='projectTitle' type="text">
+                    <button value="cancel" id = "projectCancel" formMethod="dialog">Cancel</button>
+                    <button id="projectConfirmBtn" value="default">Confirm</button>
+                </div>
+            </form>
+        </dialog>
+        <div id="list"></div>
+</body>
+</html>
